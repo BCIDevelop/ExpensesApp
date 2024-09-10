@@ -1,90 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="main.css">
-</head>
-<body>
-    
-    <main>
-        <div class="form-container">
-            <form id="main-form" class="form-container__form form">
-                <div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="main.css" />
+    </head>
+    <body>
+        <main>
+            <div class="form-container">
+                <form id="main-form" class="form-container__form form">
+                    <div>
+                        <input
+                            class="form__element"
+                            type="number"
+                            placeholder="Amount"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            class="form__title"
+                            type="text"
+                            placeholder="Title"
+                        />
+                    </div>
+                    <div>
+                        <label for="category">Choose a category:</label>
+                        <select
+                            class="form__select"
+                            name="category"
+                            id="category"
+                        ></select>
+                    </div>
+                    <div>
+                        <input
+                            class="form__calendar"
+                            type="date"
+                            id="calendar"
+                            name="calendar"
+                        />
+                    </div>
+                    <div>
+                        <textarea
+                            class="form__text"
+                            form="main-form"
+                            name="textarea"
+                            rows="10"
+                            cols="50"
+                            placeholder="Description"
+                        ></textarea>
+                    </div>
 
-                    <input class="form__element" type="number" placeholder="Amount">
-                </div>
-                <div>
-                    <input class="form__title" type="text" placeholder="Title">
-                </div>
-                <div>
+                    <button class="form__button" type="submit">
+                        Add expense
+                    </button>
+                </form>
+            </div>
+            <div class="expense-container">
+                <ul class="expense-container__category list-category">
+                    <div class="pop-up">
+                        <button class="pop-up__close">X</button>
+                        <form id="main-form-pop" class="pop-up__form form-pop">
+                            <div>
+                                <label for="amount">Amount</label>
+                                <input
+                                    id="amount-edit"
+                                    class="form-pop__element"
+                                    type="number"
+                                    placeholder="Amount"
+                                />
+                            </div>
+                            <div>
+                                <label for="title-edit">Title</label>
+                                <input
+                                    id="title-edit"
+                                    class="form-pop__title"
+                                    type="text"
+                                    placeholder="Title"
+                                />
+                            </div>
+                            <div>
+                                <label for="category-edit"
+                                    >Choose a category:</label
+                                >
+                                <select
+                                    class="form-pop__select"
+                                    name="category"
+                                    id="category-edit"
+                                ></select>
+                            </div>
+                            <div>
+                                <label for="calendar-edit">Fecha</label>
+                                <input
+                                    class="form-pop__calendar"
+                                    type="date"
+                                    id="calendar-edit"
+                                    name="calendar"
+                                />
+                            </div>
+                            <div>
+                                <textarea
+                                    class="form-pop__text"
+                                    form="main-form"
+                                    name="textarea"
+                                    rows="10"
+                                    cols="50"
+                                    placeholder="Description"
+                                ></textarea>
+                            </div>
 
-                    <label for="category">Choose a category:</label>
-                    <select class="form__select" name="category" id="category">             
-                    </select>
-                </div>
-                <div>
-
-                    <input class="form__calendar" type="date" id="calendar" name="calendar">
-                </div>
-                <div>
-
-                    <textarea class="form__text" form="main-form" name="textarea" rows="10" cols="50" placeholder="Description"></textarea>
-                </div>
-
-                <button class="form__button" type="submit">Add expense</button>
-            </form>
+                            <button class="form-pop__button" type="submit">
+                                Update expense
+                            </button>
+                        </form>
+                    </div>
+                </ul>
+                <form class="expense-container__form">
+                    <div class="form__calendar-container">
+                        <div class="form__group">
+                            <label for="calendar_start">Fecha de Inicio</label>
+                            <input
+                                class="form__calendar start"
+                                type="date"
+                                id="calendar_start"
+                                name="calendar_start"
+                            />
+                        </div>
+                        <div class="form__group">
+                            <label for="calendar_end">Fecha de Fin</label>
+                            <input
+                                class="form__calendar end"
+                                type="date"
+                                id="calendar_end"
+                                name="calendar_end"
+                            />
+                        </div>
+                    </div>
+                    <button type="submit">Search</button>
+                </form>
+                <ul class="expense-container__list list"></ul>
+            </div>
+        </main>
+        <div>
+            <canvas id="myChart"></canvas>
         </div>
-        <div class="expense-container">
-            <ul class="expense-container__category list-category">
-                <div class="pop-up">
-                    <button class="pop-up__close">Cerrar</button>
-                    <form id="main-form-pop" class="pop-up__form  form-pop">
-                        <div>
-            
-                            <input class="form-pop__element" type="number" placeholder="Amount">
-                        </div>
-                        <div>
-                            <input class="form-pop__title" type="text" placeholder="Title">
-                        </div>
-                        <div>
-            
-                            <label for="category">Choose a category:</label>
-                            <select class="form-pop__select" name="category" id="category">             
-                            </select>
-                        </div>
-                        <div>
-            
-                            <input class="form-pop__calendar" type="date" id="calendar" name="calendar">
-                        </div>
-                        <div>
-            
-                            <textarea class="form-pop__text" form="main-form" name="textarea" rows="10" cols="50" placeholder="Description"></textarea>
-                        </div>
-            
-                        <button class="form-pop__button" type="submit">Update expense</button>
-                    </form>
-                </div>
-            </ul>
-            <form class="expense-container__form ">
-                <input class="form__calendar start" type="date" id="calendar_start" name="calendar_start">
-                <input class="form__calendar end" type="date" id="calendar_end" name="calendar_end">
-                <button type="submit">Search</button>
-            </form>
-            <ul class="expense-container__list list">
-
-            </ul>
-
+        <div>
+            <canvas id="myLineChart"></canvas>
         </div>
-    </main>
-    <div>
-        <canvas id="myChart"></canvas>
-      </div>
-      <div>
-        <canvas id="myLineChart"></canvas>
-      </div>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script type="module" src="./app.js"></script>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="./app.js"></script>
 </html>
