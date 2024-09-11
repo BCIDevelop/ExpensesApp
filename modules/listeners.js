@@ -113,7 +113,7 @@ export const handleEditClick = function(e){
     const expenses = getList('expenses')
     const tracker = new Tracker(expenses)
     const findExpense = tracker.findExpense(e.target.parentElement.parentElement.getAttribute('data-id'))
-    const popup = document.querySelector('.pop-up')
+    const popup = document.querySelector(".form-edit")
     popup.style.display = 'flex'
     popup.setAttribute('data-id',findExpense.id)
     const textAreaPop = document.querySelector('.form-pop__text')
@@ -140,14 +140,13 @@ export const handleEditSubmit=async function(e){
     expenseObj.date = inputsPop[2].value.split("-").reverse().join('-')
     expenseObj.category = selectPop.value
     expenseObj.description = textAreaPop.value
-    const popup = document.querySelector('.pop-up')
+    const popup = document.querySelector(".form-edit")
     try {
         await tracker.updateExpense(popup.getAttribute('data-id'),expenseObj)
     } catch (error) {
         console.log(error)
         return
     }
-    
     expenseList.innerHTML=""
     addExpenseDOM(tracker.expenses)
     popup.style.display = 'none'
