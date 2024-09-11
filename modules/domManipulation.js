@@ -1,5 +1,4 @@
 const expenseList = document.querySelector('.expense-container__list')
-const select = document.querySelector('.form__select')
 import Category from "../class/Category.js"
 import { handleDeleteClick, handleEditClick, handleFilterClicked } from "./listeners.js"
 export const addExpenseDOM=function(expenses){

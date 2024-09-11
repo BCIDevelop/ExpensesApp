@@ -11,7 +11,7 @@ const textArea = document.querySelector('.form__text')
 const inputs= document.querySelectorAll('.form input')
 const select = document.querySelector('.form__select')
 const expenseList = document.querySelector('.expense-container__list')
-export const handleSubmitExpense = function(e){
+export const handleSubmitExpense =async function(e){
     e.preventDefault()
     /*Nos aseguramos que no esten vacios  */
     if(textArea==="" || inputs[0].value === "" || inputs[1].value ==="" || inputs[2].value ==="" || select.value==="") return
@@ -25,7 +25,13 @@ export const handleSubmitExpense = function(e){
     if(!validateData(expenseObj)) return
     const expenses= getList('expenses')
     const tracker = new Tracker(expenses)
-    tracker.addExpense(expenseObj)
+    try {
+        await tracker.addExpense(expenseObj)
+    } catch (error) {
+        console.log(error)
+        return
+    }
+    
     expenseList.innerHTML=""
     addExpenseDOM(tracker.expenses)
     form.reset()
@@ -75,10 +81,15 @@ export const handleSubmitFilter = function(e){
 
 }
 
-export const handleDeleteClick = function (e){
+export const handleDeleteClick = async function (e){
     const expenses = getList('expenses')
     const tracker = new Tracker(expenses)
-    tracker.removeExpense(e.target.parentElement.parentElement.getAttribute('data-id'))
+    try {
+        await tracker.removeExpense(e.target.parentElement.parentElement.getAttribute('data-id'))
+    } catch (error) {
+        console.log(error)
+        return
+    }
     expenseList.innerHTML=""
     addExpenseDOM(tracker.expenses)
     const myBarChart = getBarChart()
@@ -105,11 +116,9 @@ export const handleEditClick = function(e){
     inputsPop[1].value = findExpense.title
     inputsPop[2].value = findExpense.date.split("-").reverse().join('-')
     selectPop.value = findExpense.category.name
-    
-
 }
 
-export const handleEditSubmit=function(e){
+export const handleEditSubmit=async function(e){
     e.preventDefault()
     const expenses = getList('expenses')
     const tracker = new Tracker(expenses)
@@ -123,7 +132,13 @@ export const handleEditSubmit=function(e){
     expenseObj.category = selectPop.value
     expenseObj.description = textAreaPop.value
     const popup = document.querySelector('.pop-up')
-    tracker.updateExpense(popup.getAttribute('data-id'),expenseObj)
+    try {
+        await tracker.updateExpense(popup.getAttribute('data-id'),expenseObj)
+    } catch (error) {
+        console.log(error)
+        return
+    }
+    
     expenseList.innerHTML=""
     addExpenseDOM(tracker.expenses)
     popup.style.display = 'none'
