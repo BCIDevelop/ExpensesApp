@@ -1,77 +1,317 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-button{
+button {
     cursor: pointer;
 }
-body{
-    width: 100vw;
-    
+body {
+    font-family: "Arial", sans-serif !important;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
 }
-main{
+main {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
-.form-container{
+.form-container {
     display: flex;
     flex-direction: column;
     padding: 20px 20px;
     margin-bottom: 20px;
-
 }
-.form-container__form,.form-pop{
+.form-container__form,
+.form-pop {
     display: flex;
     flex-direction: column;
     gap: 19px;
     width: 50%;
 }
-.expense-container{
+.expense-container {
     display: flex;
     flex-direction: column;
-  
-
 }
-.expense-container__form{
+.expense-container__form {
     display: flex;
     flex-direction: column;
     width: 50%;
     gap: 19px;
-   
 }
-.expense-container__list{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+.expense-container__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px; /* Controla el espacio entre las tarjetas */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.list__item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    border: 1px solid #ccc;
+    transition: transform 0.2s ease;
+}
+.list__item:hover {
+    transform: translateY(
+        -5px
+    ); /* Añade un ligero efecto de elevación al hover */
+}
+.list__item h1 {
+    line-height: 1;
+}
 
+.list__item h3,
+.list__item p {
+    margin: 8px 0;
 }
-.expense-container__category{
+
+.list__item div {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-edit {
+    background-color: #008000;
+}
+.btn-delete {
+    background-color: #b81515;
+}
+.list__item button {
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: white;
+    font-weight: 600;
+    border: none;
+}
+
+.list__item .btn-edit:hover {
+    background-color: #075507;
+}
+.list__item .btn-delete:hover {
+    background-color: #720d0d;
+}
+.expense-container__category {
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
     position: relative;
 }
-.list-category__item{
+.list-category__item {
     cursor: pointer;
+    padding: 5px 18px;
+    list-style: none;
+    color: white;
+    border-radius: 20px;
+    background-color: #a180ee;
 }
-.list-category__item--active{
-    background-color: red   ;
+.list-category__item--active {
+    background-color: #3700b3;
 }
-.pop-up{
+.pop-up {
     display: none;
     width: 30%;
     position: absolute;
     left: 10%;
     top: 30%;
-    
+
     flex-direction: column;
     background-color: beige;
     border: 1px solid;
 }
-.pop-up__close{
-    width: 40px;
-    height: 40px;
-    align-self: flex-end;
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.form__element,
+.form__title,
+.form__select,
+.form__calendar,
+.form-pop__select,
+.form-pop__element,
+.form-pop__title,
+.form-pop__calendar,
+.form__text {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+    font-size: 1rem;
+    font-family: "Arial", sans-serif !important;
+}
+
+.form__button {
+    background-color: #6200ea;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form__button:hover {
+    background-color: #3700b3;
+}
+
+.expense-container {
+    width: 100%;
+    max-width: 800px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.expense-container__category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.pop-up {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    display: none;
+    border: 1px solid rgb(175, 175, 175);
+}
+
+.pop-up__close {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 15px;
+    width: 15px;
+    background-color: rgb(236, 48, 48);
+    color: white;
+    position: absolute;
+    border: none;
+    right: 15px;
+    top: 15px;
+    padding: 10px;
+    line-height: 1;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+.pop-up__close:hover {
+    background-color: rgb(189, 28, 28);
+}
+.pop-up__form {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    flex-direction: column;
+}
+.btn__add-expense {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+.form-pop__text {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+    font-size: 1rem;
+    font-family: "Arial", sans-serif !important;
+}
+.pop-up__button {
+    background-color: #03dac5;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pop-up__button:hover {
+    background-color: #018786;
+}
+
+.expense-container__form {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.form__calendar-container {
+    width: 100%;
+    gap: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+.form__group {
+    width: 100%;
+}
+
+button[type="submit"] {
+    background-color: #6200ea;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #3700b3;
+}
+
+canvas {
+    margin-top: 20px;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .expense-container__form {
+        flex-direction: column;
+    }
+
+    .form__calendar {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 }

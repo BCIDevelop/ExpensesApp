@@ -1,6 +1,17 @@
 import { getList } from "./service/storage.js";
-import { addCategory, addExpenseDOM ,addOptionCategory} from "./modules/domManipulation.js";
-import { handleEditClose, handleEditSubmit, handleSubmitExpense,handleSubmitFilter } from "./modules/listeners.js";
+import {
+    addCategory,
+    addExpenseDOM,
+    addOptionCategory,
+} from "./modules/domManipulation.js";
+import {
+    handleEditClose,
+    handleAddClose,
+    handleEditSubmit,
+    handlAddFormShow,
+    handleSubmitExpense,
+    handleSubmitFilter,
+} from "./modules/listeners.js";
 import { barChar, lineChart } from "./modules/chartManipulation.js";
 import { initDB, setDbInstance } from "./service/storageIndexDB.js";
 (async ()=>{
@@ -8,25 +19,28 @@ import { initDB, setDbInstance } from "./service/storageIndexDB.js";
     setDbInstance(db)
     let expenses=getList('expenses')
     const slicedExpenses = expenses.slice(0,3)
+    addCategory();
+    addOptionCategory();
+    addExpenseDOM(slicedExpenses);
 
+    barChar();
+    lineChart();
 
-    addCategory()
-    addOptionCategory()
-    addExpenseDOM(slicedExpenses)
+    const form = document.querySelector(".form-container__form");
+    form.addEventListener("submit", handleSubmitExpense);
 
-    barChar()
-    lineChart()
+    const filterForm = document.querySelector(".expense-container__form ");
+    filterForm.addEventListener("submit", handleSubmitFilter);
 
-    const form = document.querySelector('.form-container__form')
-    form.addEventListener('submit',handleSubmitExpense)
+    const showAddForm = document.querySelector(".btn__add-expense");
+    showAddForm.addEventListener("click",handlAddFormShow)
 
-    const filterForm = document.querySelector('.expense-container__form ')
-    filterForm.addEventListener('submit',handleSubmitFilter)
+    const editForm = document.getElementById("main-form-pop");
+    editForm.addEventListener("submit", handleEditSubmit);
 
-    const editForm = document.querySelector('.pop-up__form')
-    editForm.addEventListener('submit',handleEditSubmit)
+    const closeEditBtn = document.querySelector(".edit-close");
+    closeEditBtn.addEventListener("click", handleEditClose);
 
-    const closeBtn = document.querySelector('.pop-up__close')
-    closeBtn.addEventListener('click',handleEditClose)
+    const closeAddBtn = document.querySelector(".add-close");
+    closeAddBtn.addEventListener("click", handleAddClose);
 })()
-
