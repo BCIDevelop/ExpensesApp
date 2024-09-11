@@ -7,7 +7,7 @@ button {
     cursor: pointer;
 }
 body {
-    font-family: "Arial", sans-serif;
+    font-family: "Arial", sans-serif !important;
     background-color: #f4f4f9;
     color: #333;
     line-height: 1.6;
@@ -75,17 +75,28 @@ main {
     display: flex;
     gap: 10px;
 }
+
+.btn-edit {
+    background-color: #008000;
+}
+.btn-delete {
+    background-color: #b81515;
+}
 .list__item button {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
     border-radius: 4px;
     padding: 8px 16px;
     cursor: pointer;
     transition: background-color 0.3s;
+    color: white;
+    font-weight: 600;
+    border: none;
 }
 
-.list__item button:hover {
-    background-color: #e0e0e0;
+.list__item .btn-edit:hover {
+    background-color: #075507;
+}
+.list__item .btn-delete:hover {
+    background-color: #720d0d;
 }
 .expense-container__category {
     display: flex;
@@ -149,11 +160,11 @@ main {
 .form__text {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
     border-radius: 5px;
     border: 1px solid #ddd;
     background-color: #fafafa;
     font-size: 1rem;
+    font-family: "Arial", sans-serif !important;
 }
 
 .form__button {
@@ -203,7 +214,12 @@ main {
 }
 
 .pop-up__close {
-    background-color: red;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 15px;
+    width: 15px;
+    background-color: rgb(236, 48, 48);
     color: white;
     position: absolute;
     border: none;
@@ -211,12 +227,12 @@ main {
     top: 15px;
     padding: 10px;
     line-height: 1;
-    border-radius:50px;
+    border-radius: 50px;
     cursor: pointer;
     transition: all 0.5s ease-in-out;
 }
 .pop-up__close:hover {
-    background-color: red;
+    background-color: rgb(189, 28, 28);
 }
 .pop-up__form {
     display: flex;
@@ -224,8 +240,19 @@ main {
     gap: 10px;
     flex-direction: column;
 }
+.btn__add-expense {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
 .form-pop__text {
     width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+    font-size: 1rem;
+    font-family: "Arial", sans-serif !important;
 }
 .pop-up__button {
     background-color: #03dac5;
