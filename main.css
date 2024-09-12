@@ -31,10 +31,7 @@ main {
     gap: 19px;
     width: 50%;
 }
-.expense-container {
-    display: flex;
-    flex-direction: column;
-}
+
 .expense-container__form {
     display: flex;
     flex-direction: column;
@@ -43,7 +40,7 @@ main {
 }
 .expense-container__list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px; /* Controla el espacio entre las tarjetas */
     list-style: none;
     padding: 0;
@@ -131,7 +128,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px;
+    margin: 40px auto 20px;
 }
 
 .form-container {
@@ -139,8 +136,9 @@ main {
     max-width: 400px;
     background: #fff;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
@@ -183,11 +181,14 @@ main {
 
 .expense-container {
     width: 100%;
-    max-width: 800px;
+    display: flex;
+    flex-direction: column;
     background: #fff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
 }
 
 .expense-container__category {
@@ -240,10 +241,19 @@ main {
     gap: 10px;
     flex-direction: column;
 }
+.expense-header {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
 .btn__add-expense {
     position: fixed;
     top: 20px;
+    z-index: 20;
     right: 20px;
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
 }
 .form-pop__text {
     width: 100%;
@@ -277,8 +287,9 @@ main {
 }
 .form__calendar-container {
     width: 100%;
-    gap: 2rem;
+    gap: 1rem;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 .form__group {
@@ -304,14 +315,41 @@ canvas {
     max-width: 100%;
     border-radius: 10px;
 }
-
-@media (max-width: 768px) {
+.expense-charts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.expense-chart {
+    width: 100%;
+    border-radius: 10px;
+    background: #fff;
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+@media screen and (min-width: 480px) {
+    .form__calendar-container {
+        gap: 2rem;
+        flex-direction: row;
+    }
+    .expense-container__list {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+}
+@media (min-width: 768px) {
     .expense-container__form {
         flex-direction: column;
     }
-
+    .expense-container__list {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
     .form__calendar {
         width: 100%;
         margin-bottom: 10px;
+    }
+    .expense-charts-container {
+        flex-direction: row;
     }
 }

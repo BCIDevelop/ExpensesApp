@@ -52,6 +52,7 @@ export const handleSubmitExpense =async function (e) {
     myLineChart.destroy()
     barChar()
     lineChart()
+    handleAddClose();
 }
 export const handleFilterClicked=function(e){
     const expenses = getList('expenses')
